@@ -4,6 +4,8 @@ const app = express();
 
 const mongoose = require('mongoose');
 
+const shoesRoutes = require('./routes/shoes');
+
 mongoose.connect('mongodb+srv://malmohelo:malmohelo@cluster0.wiytf.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
   { useNewUrlParser: true,
     useUnifiedTopology: true })
@@ -20,5 +22,7 @@ app.use((req, res, next) => {
 app.use((req, res) => {
    res.json({ message: 'Votre requête a bien été reçue !' }); 
 });
+
+app.use('/api/shoes', shoesRoutes);
 
 module.exports = app;
